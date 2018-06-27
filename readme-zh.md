@@ -8,11 +8,11 @@ country code)开头。
 
 使用说明
 -------------------------------------------------------
-- c/c++
+- c/c++:
    使用phonenr.h和phonenr.c这2个文件即可。
 
-- kotlin
+- kotlin:
    使用PhoneNr.kt
 
-- java
+- java:
    使用PhoneNr.java

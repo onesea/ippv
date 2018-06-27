@@ -1,15 +1,15 @@
 IPPV
 ======================================================
-  internal phone-number parser and validater. it
+  International phone-number parser and validater. It
 can be used to check if a phone number starts with a
 valid country code, aka, country dailing code.
 
 
 usage
 -------------------------------------------------------
-  - c/c++
+  - c/c++:
     simply use phonenr.h and phonenr.c in your projects
-  - kotlin
+  - kotlin:
     use PhoneNr.kt
-  - java
+  - java:
     use PhoneNr.java
