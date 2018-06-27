@@ -42,7 +42,7 @@ int cc_match(const char *nr) {
 }
 
 int cc_init() {
-#include "country_dial_in_code.h"
+#include "country_dialing_code.h"
 	for (unsigned i = 0; i < sizeof cc_list / sizeof cc_list[0]; ++i) {
 		cc_add(cc_list[i]);
 	}
@@ -53,7 +53,7 @@ int cc_init() {
 // parse and validate country code and phone number, as well as filtering white space chars
 int parse_phone_nr(char *phone, char *cc) {
 	if (g_tree[1] == 0) {
-#include "country_dial_in_code.h"
+#include "country_dialing_code.h"
 		for (unsigned i = 0; i < sizeof cc_list / sizeof cc_list[0]; ++i) {
 			cc_add(cc_list[i]);
 		}
