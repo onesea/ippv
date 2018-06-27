@@ -8,8 +8,8 @@ extern "C" {
 int cc_init();
 int cc_match(const char *nr);
 // optional, if not called, built-in list will be used
-void add_country_code(const char *cc);
-int parse_phone_nr(char *phone, char *cc);
+void cc_add(const char *cc);
+int parse_phone_nr(char *phone, char *default_cc);
 
 #ifdef __cplusplus
 }

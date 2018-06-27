@@ -4,7 +4,7 @@
 /*---------------------------- core algrithm -----------------------------------*/
 static void *g_tree[] = {0,0,0,0,0,0,0,0,0,0}; 
 // add a country code, i.e. build a parsing tree
-void add_country_code(const char *cc) {
+void cc_add(const char *cc) {
 	void **tree = g_tree;
 	while (*cc) {
 		int n = *cc++ - '0';
@@ -19,7 +19,7 @@ void add_country_code(const char *cc) {
 	}
 }
 
-// country code matching，returns the length of success match, or -1 on failure
+// country code matching，returns the length of a successful match, or -1 on failure
 int cc_match(const char *nr) {
 	void **tree = g_tree;
 	for (int i = 0; ; ++i) {
@@ -44,7 +44,7 @@ int cc_match(const char *nr) {
 int cc_init() {
 #include "country_dial_in_code.h"
 	for (unsigned i = 0; i < sizeof cc_list / sizeof cc_list[0]; ++i) {
-		add_country_code(cc_list[i]);
+		cc_add(cc_list[i]);
 	}
 	return 0;
 }
@@ -55,7 +55,7 @@ int parse_phone_nr(char *phone, char *cc) {
 	if (g_tree[1] == 0) {
 #include "country_dial_in_code.h"
 		for (unsigned i = 0; i < sizeof cc_list / sizeof cc_list[0]; ++i) {
-			add_country_code(cc_list[i]);
+			cc_add(cc_list[i]);
 		}
 	}
 	char buf[100];
