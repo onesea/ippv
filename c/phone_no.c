@@ -1,4 +1,4 @@
-#include "phonenr.h"
+#include "phone_no.h"
 #include <stdlib.h>
 
 /*---------------------------- core algrithm -----------------------------------*/
@@ -42,7 +42,7 @@ int cc_match(const char *nr) {
 }
 
 int cc_init() {
-#include "country_dialing_code.h"
+#include "country_code.h"
 	for (unsigned i = 0; i < sizeof cc_list / sizeof cc_list[0]; ++i) {
 		cc_add(cc_list[i]);
 	}
@@ -51,9 +51,9 @@ int cc_init() {
 
 /*------------------ core algrithm ends，below are api wrappers -------------------------*/
 // parse and validate country code and phone number, as well as filtering white space chars
-int parse_phone_nr(char *phone, char *cc) {
+int parse_phone_no(char *phone, char *cc) {
 	if (g_tree[1] == 0) {
-#include "country_dialing_code.h"
+#include "country_code.h"
 		for (unsigned i = 0; i < sizeof cc_list / sizeof cc_list[0]; ++i) {
 			cc_add(cc_list[i]);
 		}

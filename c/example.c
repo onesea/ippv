@@ -1,4 +1,4 @@
-#include "phonenr.h"
+#include "phone_no.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,7 +29,7 @@ void general_test(int argc, char *argv[]) {
 	char phone[64];
 	strncpy(phone, argv[2], 63);
 
-	int ret = parse_phone_nr(phone, country);
+	int ret = parse_phone_no(phone, country);
 	if (ret == 0)
 		printf("[%s] [%s]\n", country, phone);
 	else
