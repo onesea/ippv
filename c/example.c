@@ -22,7 +22,7 @@ void general_test(int argc, char *argv[]) {
 		exit(1);
 	}
 
-	printf("country=[%s], phone=[%s] ==> ", argv[1], argv[2]);
+	printf("country=[%s], phone=[%s] -> ", argv[1], argv[2]);
 
 	char country[32];
 	strncpy(country, argv[1], 31);
@@ -30,10 +30,17 @@ void general_test(int argc, char *argv[]) {
 	strncpy(phone, argv[2], 63);
 
 	int ret = parse_phone_no(phone, country);
-	if (ret == 0)
-		printf("[%s] [%s]\n", country, phone);
-	else
-		printf("inalid phone number\n");
+	if (ret != 0) {
+		printf("invalid phone number\n");
+		return;
+	}
+	
+	printf("[%s] [%s]\n", country, phone);
+	char buf[120];
+	snprintf(buf, sizeof buf, "%s%s", country+1,phone);
+	int ld;
+	int len = cc_match_ld(buf,&ld);
+	printf("%d %d\n", len, ld);
 }
 
 int main(int argc, char *argv[]) {
