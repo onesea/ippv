@@ -1,21 +1,24 @@
 #include "phone_no.h"
 #include <stdlib.h>
+#include <string.h>
 
 /*---------------------------- core algrithm -----------------------------------*/
 typedef struct node_st {
 	int type_;
+	char iso_[4];
 	struct node_st *child_;
 } node_t;
 
 static node_t *g_tree = 0; 
 // add a country code, i.e. build a parsing tree
-void cc_add(const char *cc) {
+void cc_add(const char *cc, const char *iso) {
 	node_t *tree = g_tree;
 	while (1) {
 		int d = *cc++ - '0';
 		node_t *node = tree+d;
 		if (*cc == 0) {
 			node->type_ = 2;
+			strcpy(node->iso_, iso);
 			break;
 		}
 		if (node->type_ == 0)
@@ -54,11 +57,11 @@ int cc_match(const char *nr) {
 	return 0;
 }
 
-int cc_match_ld(const char *no, int *ld) {
+int cc_match_ld(const char *no, int *ld, char *iso) {
 	int len = 0;
 	*ld = 0;
 	node_t *tree = g_tree;
-	for (int i = 0; *no && tree; ++i) {
+	for (int i = 0; *no; ++i) {
 		int d = *no++ - '0';
 		node_t *node = tree + d;
 
@@ -71,6 +74,12 @@ int cc_match_ld(const char *no, int *ld) {
 				len = i+1;
 			else
 				*ld = i+1;
+			iso[0]=node->iso_[0];
+			iso[1]=node->iso_[1];
+			iso[2]=node->iso_[2];
+			iso[3]=0;
+			if (node->child_ == 0)
+				break;
 		}
 
 		tree = node->child_;
@@ -85,8 +94,8 @@ int cc_init() {
 		g_tree[i].type_ = 0;
 		g_tree[i].child_ = 0;
 	}
-	for (unsigned i = 0; i < sizeof cc_list / sizeof cc_list[0]; ++i) {
-		cc_add(cc_list[i]);
+	for (unsigned i = 0; i < sizeof cc_list / sizeof cc_list[0]; i+=2) {
+		cc_add(cc_list[i], cc_list[i+1]);
 	}
 	return 0;
 }
@@ -100,8 +109,8 @@ int parse_phone_no(char *phone, char *cc) {
 			g_tree[i].type_ = 0;
 			g_tree[i].child_ = 0;
 		}
-		for (unsigned i = 0; i < sizeof cc_list / sizeof cc_list[0]; ++i) {
-			cc_add(cc_list[i]);
+		for (unsigned i = 0; i < sizeof cc_list / sizeof cc_list[0]; i+=2) {
+			cc_add(cc_list[i], cc_list[i+1]);
 		}
 	}
 

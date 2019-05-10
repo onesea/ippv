@@ -7,9 +7,12 @@
 
 void stress_test() {
 	cc_init(); // only needed when using core algrithm directly
+	int len, ld;
+	char iso[8];
 	for (int i = 0; i < 100000000; ++i) {
-		int len = cc_match("85212345678");
-		if (len != 3) {
+		//len = cc_match("390669845678");
+		len = cc_match_ld("390669845678", &ld, iso);
+		if (len != 2) {
 			printf("error %d\n", len);
 			break;
 		}
@@ -18,7 +21,7 @@ void stress_test() {
 
 void general_test(int argc, char *argv[]) {
 	if (argc < 3) {
-		printf("\tusage: %s country-code phone-nr\n", argv[0]);
+		printf("\tusage: %s country-code phone-no\n", argv[0]);
 		exit(1);
 	}
 
@@ -39,8 +42,19 @@ void general_test(int argc, char *argv[]) {
 	char buf[120];
 	snprintf(buf, sizeof buf, "%s%s", country+1,phone);
 	int ld;
-	int len = cc_match_ld(buf,&ld);
-	printf("%d %d\n", len, ld);
+	char iso[8];
+	int len = cc_match_ld(buf,&ld,iso);
+	if (len != strlen(country)-1) {
+		printf("error parse leading digits\n");
+	} else {
+		if (ld > 0) {
+			int t = buf[ld];
+			buf[ld] = 0;
+			printf("alt: %s ", buf);
+			buf[ld] = t;
+			printf("%s %s\n", buf+ld,iso);
+		}
+	}
 }
 
 int main(int argc, char *argv[]) {
