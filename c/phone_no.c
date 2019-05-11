@@ -3,10 +3,10 @@
 #include <string.h>
 
 /*---------------------------- core algrithm -----------------------------------*/
-typedef struct node_st {
+typedef struct __node_st {
 	int type_;
 	char iso_[4];
-	struct node_st *child_;
+	struct __node_st *child_;
 } node_t;
 
 static node_t *g_tree = 0; 
@@ -18,22 +18,22 @@ void cc_add(const char *cc, const char *iso) {
 		node_t *node = tree+d;
 		if (*cc == 0) {
 			node->type_ = 2;
-			strcpy(node->iso_, iso);
+			strncpy(node->iso_, iso, 4);
 			break;
 		}
 		if (node->type_ == 0)
 			node->type_ = 1;
 		if (node->child_ != 0) {
 			tree = node->child_;
-		} else {
-			node = (node_t*)malloc(sizeof (node_t) * 10);
-			for (int i = 0; i < 10; ++i) {
-				node[i].type_ = 0;
-				node[i].child_ = 0;
-			}
-			tree[d].child_ = node;
-			tree = node;
+			continue;
 		}
+		node = (node_t*)malloc(sizeof (node_t) * 10);
+		for (int i = 0; i < 10; ++i) {
+			node[i].type_ = 0;
+			node[i].child_ = 0;
+		}
+		tree[d].child_ = node;
+		tree = node;
 	}
 }
 
@@ -57,7 +57,7 @@ int cc_match(const char *nr) {
 	return 0;
 }
 
-int cc_match_ld(const char *no, int *ld, char *iso) {
+int cc_match_ld(const char *no, int *ld, char **iso) {
 	int len = 0;
 	*ld = 0;
 	node_t *tree = g_tree;
@@ -74,10 +74,7 @@ int cc_match_ld(const char *no, int *ld, char *iso) {
 				len = i+1;
 			else
 				*ld = i+1;
-			iso[0]=node->iso_[0];
-			iso[1]=node->iso_[1];
-			iso[2]=node->iso_[2];
-			iso[3]=0;
+			*iso = node->iso_;
 			if (node->child_ == 0)
 				break;
 		}
