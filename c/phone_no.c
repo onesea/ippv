@@ -57,7 +57,7 @@ int cc_match(const char *nr) {
 	return 0;
 }
 
-int cc_match_ld(const char *no, int *ld, char **iso) {
+int cc_match_2(const char *no, int *ld, char **iso) {
 	int len = 0;
 	*ld = 0;
 	node_t *tree = g_tree;
@@ -74,6 +74,36 @@ int cc_match_ld(const char *no, int *ld, char **iso) {
 				len = i+1;
 			else
 				*ld = i+1;
+			*iso = node->iso_;
+			if (node->child_ == 0)
+				break;
+		}
+
+		tree = node->child_;
+	}
+	return len;
+}
+
+int cc_match_3(const char *no, int *ld, int *ac, char **iso) {
+	int len = 0;
+	*ld = 0;
+	*ac = 0;
+	node_t *tree = g_tree;
+	for (int i = 0; *no; ++i) {
+		int d = *no++ - '0';
+		node_t *node = tree + d;
+
+		if (node->type_ == 0) {
+			break;
+		}
+
+		if (node->type_ == 2) {
+			if (len == 0)
+				len = i+1;
+			else if (*ld == 0)
+				*ld = i+1;
+			else
+				*ac = i+1;
 			*iso = node->iso_;
 			if (node->child_ == 0)
 				break;

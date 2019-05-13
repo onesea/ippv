@@ -19,8 +19,9 @@ int main(int argc, char *argv[])
 	printf("%s: ", phone);
 
 	int ld=0;
+	int ac=0;
 	char *iso=NULL;
-	int len = cc_match_ld(phone,&ld,&iso);
+	int len = cc_match_3(phone,&ld,&ac,&iso);
 	if (len <= 0) {
 		printf("parse error\n");
 		exit(1);
@@ -39,5 +40,18 @@ int main(int argc, char *argv[])
 	phone[ld] = 0;
 	printf(" %s", phone+len);
 	phone[ld] = t;
-	printf(" %s %s\n", phone+ld,iso);
+	if (ac<=0) {
+		printf(" %s %s\n", phone+ld,iso);
+		exit(0);
+	}
+
+	t = phone[ac];
+	phone[ac] = 0;
+	printf(" %s", phone+ld);
+	phone[ac] = t;
+	printf(" %s %s\n", phone+ac,iso);
+
+	// stress test
+	for (int i=0; i<100000000;++i)
+		len = cc_match_3(phone,&ld,&ac,&iso);
 }
