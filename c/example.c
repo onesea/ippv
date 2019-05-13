@@ -53,5 +53,7 @@ int main(int argc, char *argv[])
 
 	// stress test
 	for (int i=0; i<100000000;++i)
-		len = cc_match_3(phone,&ld,&ac,&iso);
+		//len = cc_match_3(phone,&ld,&ac,&iso);
+		//len = cc_match_2(phone,&ld,&iso);
+		len = cc_match(phone);
 }
