@@ -18,7 +18,7 @@ void cc_add(const char *cc, const char *iso) {
 		node_t *node = tree+d;
 		if (*cc == 0) {
 			node->type_ = 2;
-			strncpy(node->iso_, iso, 4);
+			strncpy(node->iso_, iso, sizeof node->iso_);
 			break;
 		}
 		if (node->type_ == 0)
