@@ -85,7 +85,9 @@ int cc_match_ld(const char *no, int *ld, char **iso) {
 }
 
 int cc_init() {
-#include "country_code.h"
+	const char *cc_list[] = {
+#include "../country_code.txt"
+	};
 	g_tree = (node_t*)malloc(sizeof (node_t) * 10);
 	for (int i = 0; i < 10; ++i) {
 		g_tree[i].type_ = 0;
@@ -100,15 +102,7 @@ int cc_init() {
 /*------------------ core algrithm ends，below are api wrappers -------------------------*/
 int parse_phone_no(char *phone, char *cc) {
 	if (g_tree == 0) {
-#include "country_code.h"
-		g_tree = (node_t*)malloc(sizeof (node_t) * 10);
-		for (int i = 0; i < 10; ++i) {
-			g_tree[i].type_ = 0;
-			g_tree[i].child_ = 0;
-		}
-		for (unsigned i = 0; i < sizeof cc_list / sizeof cc_list[0]; i+=2) {
-			cc_add(cc_list[i], cc_list[i+1]);
-		}
+		cc_init();
 	}
 
 	int n = 0;

@@ -1,13 +1,13 @@
 CFLAGS=-std=c11 -Wall -O -g
 
-TARGETS=example leading_digits
+TARGETS=example1 example2
 
 all: $(TARGETS)
 
-example: phone_no.o example.o
+example1: phone_no.o example1.o
 	$(CC) $(LDFLAGS) $(LDLIB) -o $@ $^
 
-leading_digits: phone_no.o leading_digits.o
+example2: phone_no.o example2.o
 	$(CC) $(LDFLAGS) $(LDLIB) -o $@ $^
 
 .PHONY: clean
