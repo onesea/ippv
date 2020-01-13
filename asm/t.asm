@@ -3,9 +3,9 @@ section .text
     global main 
     extern printf, scanf
 
-frame_size equ 40
+stack_size equ 40
 main:
-    sub     rsp,  frame_size
+    sub     rsp, stack_size
 
     mov     rsi, rsp 
     lea     rdi, [rel scanf_str]
@@ -14,13 +14,13 @@ main:
     cmp     rax, 1
     jne     .exit
 
-    lea     rdi, [rel format_str]
+    lea     rdi, [rel printf_str]
     mov     rsi, [rsp]
     xor     eax, eax 
     call    printf
 .exit:
-    add     rsp,  frame_size
+    add     rsp, stack_size
     ret
 
-scanf_str: db "%ld",0
-format_str: db "%ld",10,0
+scanf_str:  db "%ld",0
+printf_str: db "%ld",10,0
