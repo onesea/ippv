@@ -1,12 +1,13 @@
-section .sdfsdfrodata
-str_fmt:	db "inserted: %s %s.",10,0  ; 10 is LF
-
 struc node;, -88 ; base addr: -88
 	.value:	resd	1
 	.iso:	resb	4
 	.child:	resq	10
 endstruc
 
+section .rodata
+str_fmt:	db "inserted: %s %s.",10,0  ; 10 is LF
+
+section .data
 tree:
 	istruc node
 		at node.value, dd 0
