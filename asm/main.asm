@@ -1,11 +1,13 @@
 section .text
     global main
     extern printf, scanf
-    extern insert, match
+    extern init_tree,insert, match
 
     stack_size equ 48
 init:
     sub     rsp, stack_size
+
+    call    init_tree
 
     mov     r12, 10
 .prompt_for_input:
@@ -38,6 +40,8 @@ run:
     lea     rdi, [rel phone_no]
     xor     eax, eax
     call    match
+    lea     rdi, [rel cc_fmt]
+    call    printf WRT ..plt
     ret
 
 main:
@@ -50,3 +54,4 @@ section .rodata
     prompt_str:	db "Enter cc and iso code: ",0
     printf_fmt:	db "The input is: %s %s.",10,0
     scanf_fmt:	db "%s %s",0
+    cc_fmt:	db 10,"%ld %ld %ld %s",10,0
