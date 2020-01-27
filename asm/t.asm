@@ -4,6 +4,7 @@ section .text
     extern printf, scanf
 
 stack_size equ 48
+
 main:
     sub     rsp, stack_size
 
