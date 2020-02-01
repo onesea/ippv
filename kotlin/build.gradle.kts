@@ -2,7 +2,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
 	extra.apply {
-		set("grpcVersion","+")
 		set("kotlinVersion", "1.3.61")
 	}
 
@@ -10,7 +9,6 @@ buildscript {
 		mavenCentral()
 		maven { url = uri("https://repo.spring.io/snapshot") }
 		maven { url = uri("https://repo.spring.io/milestone") }
-
 	}
 
 	dependencies {
@@ -19,13 +17,11 @@ buildscript {
 }
 
 plugins {
-	id("io.spring.dependency-management") version("1.0.5.RELEASE")
-	id("war")
 	id("java")
 	id("application")
 	kotlin("jvm") version("${property("kotlinVersion")}")
+	id("io.spring.dependency-management") version("1.0.5.RELEASE")
 }
-
 
 dependencyManagement {
      imports {
@@ -48,7 +44,6 @@ application {
 	mainClassName = "com.my.ippv.MainKt"
 }
 
-
 dependencies {
 	implementation("com.google.guava:guava:+")
 	implementation("io.projectreactor:reactor-core")
@@ -66,4 +61,3 @@ tasks.withType<KotlinCompile> {
                 jvmTarget = "12"
         }
 }
-
