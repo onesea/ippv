@@ -1,6 +1,6 @@
 package com.my.ippv;
 
-public class PhoneNr {
+public class PhoneNo {
     class Node {
         public Node[] child;
         Node() {

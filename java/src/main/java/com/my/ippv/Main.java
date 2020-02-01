@@ -2,7 +2,7 @@ package com.my.ippv;
 
 public class Main {
 	public static void main(String[] args) {
-	    PhoneNr ippv = new PhoneNr();
+	    PhoneNo ippv = new PhoneNo();
 	    ippv.add("1");
 	    ippv.add("852");
 
