@@ -11,12 +11,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "webpack": "*",
+    "webpack-cli": "*"
   },
   "dependencies": {
-    "fastify": "^2.11.0",
-    "fastify-static": "^2.6.0",
-    "lodash": "^4.17.15"
+    "fastify": "*",
+    "fastify-static": "*",
+    "lodash": "*"
   }
 }

@@ -14,7 +14,8 @@ fastify.get('/hello', async (request, reply) => {
 
 const start = async () => {
   try {
-    await fastify.listen(3000, '192.168.56.101')
+    //await fastify.listen(3000, '192.168.56.107')
+    await fastify.listen(3000)
     fastify.log.info(`server listening on ${fastify.server.address().port}`)
   } catch (err) {
     fastify.log.error(err)
