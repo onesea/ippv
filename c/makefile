@@ -1,4 +1,4 @@
-CFLAGS=-std=c11 -Wall -O -g
+CFLAGS=-std=c18 -Wall -O -g
 
 TARGETS=example
 
