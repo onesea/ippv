@@ -116,8 +116,9 @@ int cc_match_3(const char *no, int *ld, int *ac, char **iso) {
 
 int cc_init() {
 	const char *cc_list[] = {
-#include "../country_code.txt"
+#include "cc_list.i"
 	};
+
 	g_tree = (node_t*)malloc(sizeof (node_t) * 10);
 	for (int i = 0; i < 10; ++i) {
 		g_tree[i].type_ = 0;
