@@ -1,13 +1,17 @@
-extern crate phone;
+//extern crate phone;
+use phone::{IPPv};
 
 fn main() {
-    phone::add("80", "I80");
-    phone::add("801", "I801");
-    phone::add("8012", "I8012");
-    let (len,ld,ac,iso) = phone::parse("8099999999");
-    println!("{} {} {} {}", len, ld, ac, iso);
-    let (len,ld,ac,iso) = phone::parse("80199999999");
-    println!("{} {} {} {}", len, ld, ac, iso);
-    let (len,ld,ac,iso) = phone::parse("801299999999");
-    println!("{} {} {} {}", len, ld, ac, iso);
+    // init parse tree
+    "80".add_cc("I80");
+    "801".add_cc("I801");
+    "8012".add_cc("I8012");
+
+    // test
+    let res = "8099999999".ippv();
+    println!("{:?}", res);
+    let res = "80199999999".ippv();
+    println!("{:?}", res);
+    let res = "801299999999".ippv();
+    println!("{:?}", res);
 }

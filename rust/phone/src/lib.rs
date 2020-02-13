@@ -1,13 +1,23 @@
-const MAX:usize = 10;
+pub trait IPPv {
+	fn add_cc(&self, iso: &str);
+	fn ippv(&self) -> (u8, u8, u8, &str);
+}
+
+impl IPPv for str {
+	fn add_cc(&self, iso: &str) { add(self, iso) }
+	fn ippv(&self) -> (u8, u8, u8, &str) { parse(self) }
+}
+
+const MAX_CHILD:usize = 10;
 struct Node {
     flags: u64,
     iso: String,
-    child: [Option<Box<Node>>; MAX]
+    child: [Option<Box<Node>>; MAX_CHILD]
 }
 
-static mut TREE: [Option<Box<Node>>; MAX] = [None,None,None,None,None,None,None,None,None,None];
+static mut TREE: [Option<Box<Node>>; MAX_CHILD] = [None,None,None,None,None,None,None,None,None,None];
 
-pub fn add(nr: &str, iso: &str) {
+fn add(nr: &str, iso: &str) {
     let mut tree = unsafe { &mut TREE };
     for (i, ch) in nr.chars().enumerate() {
         let index = ch.to_digit(10).unwrap() as usize;
@@ -31,7 +41,7 @@ pub fn add(nr: &str, iso: &str) {
     }
  }
 
-pub fn parse(nr: &str) -> (u8, u8, u8, &str) {
+fn parse(nr: &str) -> (u8, u8, u8, &str) {
     let mut len = 0u8;
     let mut ld = 0u8;
     let mut ac = 0u8;
