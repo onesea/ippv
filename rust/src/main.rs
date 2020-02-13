@@ -1,4 +1,4 @@
-mod phone;
+extern crate phone;
 
 fn main() {
     phone::add("80", "I80");
