@@ -1,4 +1,6 @@
-#!/usr/local/bin/julia
+module phone
+
+export add, parse
 
 mutable struct Node{T}
     data::T
@@ -56,15 +58,4 @@ function parse(phone::String)
     len,ld,ac,iso
 end
 
-add("86","CHN")
-add("86186","CU")
-add("86180","CT")
-add("1","USA")
-add("1186","USCU")
-add("1180","USCT")
-add("11809","US-9")
-println(parse("8610801111"))
-println(parse("861801111"))
-println(parse("12801111"))
-println(parse("11801111"))
-println(parse("118097777"))
+end
