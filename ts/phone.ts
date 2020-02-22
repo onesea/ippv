@@ -1,7 +1,7 @@
 class Node {
-    public type: Number
-    public iso: string
-    public child: Node[]
+    public type: Number = 0
+    public iso: string = ''
+    public child: Node[] = []
 };
 
 export class PhoneNo {
@@ -32,7 +32,7 @@ export class PhoneNo {
         let ln = 0
         let ld = 0
         let ac = 0
-        let iso:string = null
+        let iso:string = ''
         let root = this.tree
         for (let i = 0; i < phone.length; ++i) {
             let index = phone.charCodeAt(i) - '0'.charCodeAt(0)
