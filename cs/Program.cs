@@ -20,14 +20,19 @@ namespace ippv
 
             int cc, ld, ac;
             string iso;
-            cc = 0; ld = 0; ac = 0; iso = null;
-            cc = PhoneNr.match("8095555", ref ld, ref ac, ref iso);
-            cc = 0; ld = 0; ac = 0; iso = null;
-            cc = PhoneNr.match("80195555", ref ld, ref ac, ref iso);
-            cc = 0; ld = 0; ac = 0; iso = null;
-            cc = PhoneNr.match("801195555", ref ld, ref ac, ref iso);
-            cc = 0; ld = 0; ac = 0; iso = null;
-            cc = PhoneNr.match("821195555", ref ld, ref ac, ref iso);
+            string phone;
+            phone = "8095555"; cc = 0; ld = 0; ac = 0; iso = null;
+            cc = PhoneNr.match(phone, ref ld, ref ac, ref iso);
+            Console.WriteLine(phone + " -> " + cc + "," + ld + "," + ac + "," + iso);
+            phone="80195555"; cc = 0; ld = 0; ac = 0; iso = null;
+            cc = PhoneNr.match(phone, ref ld, ref ac, ref iso);
+            Console.WriteLine(phone + " -> " + cc + "," + ld + "," + ac + "," + iso);
+            phone = "801195555"; cc = 0; ld = 0; ac = 0; iso = null;
+            cc = PhoneNr.match(phone, ref ld, ref ac, ref iso);
+            Console.WriteLine(phone + " -> " + cc + "," + ld + "," + ac + "," + iso);
+            phone = "821195555"; cc = 0; ld = 0; ac = 0; iso = null;
+            cc = PhoneNr.match(phone, ref ld, ref ac, ref iso);
+            Console.WriteLine(phone + " -> " + cc + "," + ld + "," + ac + "," + iso);
         }
     }
 }
