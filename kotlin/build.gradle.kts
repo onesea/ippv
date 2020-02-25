@@ -50,14 +50,14 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${property("kotlinVersion")}")
 }
 
-tasks.wrapper {
-	gradleVersion = "6.2"
-	distributionType = Wrapper.DistributionType.ALL
-}
-
 tasks.withType<KotlinCompile> {
         kotlinOptions {
                 freeCompilerArgs = listOf("-Xjsr305=strict")
                 jvmTarget = "12"
         }
+}
+
+tasks.wrapper {
+	gradleVersion = "6.2.1"
+	distributionType = Wrapper.DistributionType.ALL
 }
