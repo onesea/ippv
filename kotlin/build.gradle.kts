@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
 	extra.apply {
-		set("kotlinVersion", "1.3.61")
+		set("kotlinVersion", "1.3.70")
 	}
 
 	repositories {
