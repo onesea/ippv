@@ -16,3 +16,8 @@ runj:
 	java -cp phone.jar com.my.ippv.MainKt
 runkt:
 	/root/kotlinc/bin/kotlin -cp phone.jar com.my.ippv.MainKt
+
+clean:
+	rm -f ${SRCDIR}/${PKG}/*.class ${CWD}/phone.jar
+
+.PHONY: run runj runkt clean

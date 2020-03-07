@@ -1,9 +1,14 @@
 all: compile
 PKG=com/my/ippv
 SRCDIR=src/main/java
+
+OPTIONS=--target 13
+
 compile:
-	cd $(SRCDIR) && javac $(PKG)/Main.java
-	cd $(SRCDIR) && javac $(PKG)/Result.java
-	cd $(SRCDIR) && javac $(PKG)/PhoneNo.java
+	cd $(SRCDIR) && javac ${OPTIONS} $(PKG)/Main.java
 run:
 	java -cp $(SRCDIR)  com.my.ippv.Main
+clean:
+	rm -f ${SRCDIR}/${PKG}/*.class
+
+.PHONY: run clean
