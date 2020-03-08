@@ -15,6 +15,7 @@ co = coroutine.create(function (index,options)
 
 phone_add('123','my')
 phone_add('12301','up')
+phone_add('123011','up')
 
 res = true
 while res do
