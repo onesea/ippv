@@ -1,4 +1,4 @@
-#!/opt/bin/lua
+#!/usr/bin/env lua
 
 require('phone')
 
