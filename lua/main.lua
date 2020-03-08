@@ -19,5 +19,5 @@ phone_add('12301','up')
 res = true
 while res do
 	res,no,cc,ld,ac,iso =  coroutine.resume(co, 1, 'test')
-	if res then print(res,no,cc,ld,ac,iso) end
+	if res then print(res,cc,ld,ac,iso,no) end
 end
