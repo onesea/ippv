@@ -2,7 +2,7 @@ PKG=com/my/ippv
 CWD=$(shell pwd)
 SRCDIR=src/main/java
 
-OPTIONS=--target 13
+OPTIONS=--target 14
 
 all: ${CWD}/phone.jar
 
