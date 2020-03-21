@@ -1,4 +1,4 @@
-lllllllllljjjk:GOPATH=$(shell pwd)
+GOPATH=$(shell pwd)
 GO=go
 
 all: main
