@@ -4,8 +4,8 @@ GO=go
 all: main
 
 main:
-	@GOPATH=$(GOPATH) cd main && $(GO) install -v main
+	@cd main && GOPATH=$(GOPATH) $(GO) install -v main
 clean:
-	@GOPATH=$(GOPATH) cd main && $(GO) clean -i main
+	@cd main && GOPATH=$(GOPATH) $(GO) clean -i main
 
 .PHONY: main
