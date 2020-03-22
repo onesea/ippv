@@ -20,8 +20,8 @@ repositories {
 
 dependencies {
 	//implementation("com.google.guava:guava:+")
-	implementation("org.bouncycastle:bcprov-jdk15on:+")
-	implementation("org.bouncycastle:bcpkix-jdk15on:+")
+	//implementation("org.bouncycastle:bcprov-jdk15on:+")
+	//implementation("org.bouncycastle:bcpkix-jdk15on:+")
 }
 
 application {
