@@ -45,9 +45,9 @@ application {
 }
 
 dependencies {
-	implementation("com.google.guava:guava:+")
-	implementation("io.projectreactor:reactor-core")
-	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${property("kotlinVersion")}")
+	//implementation("com.google.guava:guava:+")
+	//implementation("io.projectreactor:reactor-core")
+	implementation("org.jetbrains.kotlin:kotlin-stdlib:${property("kotlinVersion")}")
 }
 
 tasks.withType<KotlinCompile> {
