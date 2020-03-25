@@ -1,3 +1,5 @@
+val gradle_version = "6.3"
+
 buildscript {
 	repositories {
 		mavenCentral()
@@ -29,7 +31,7 @@ application {
 }
 
 tasks.wrapper {
-  gradleVersion = "6.3-rc-4"
+  gradleVersion = gradle_version
   distributionType = Wrapper.DistributionType.ALL
 }
 

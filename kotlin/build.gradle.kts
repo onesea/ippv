@@ -1,5 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+val gradle_version = "6.3"
+
 buildscript {
 	extra.apply {
 		set("kotlinVersion", "1.3.70")
@@ -20,7 +22,7 @@ plugins {
 	id("java")
 	id("application")
 	kotlin("jvm") version("${property("kotlinVersion")}")
-	id("io.spring.dependency-management") version("1.0.5.RELEASE")
+	id("io.spring.dependency-management") version("1.0.9.RELEASE")
 }
 
 dependencyManagement {
@@ -58,6 +60,6 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.wrapper {
-	gradleVersion = "6.3-rc-4"
+	gradleVersion = gradle_version
 	distributionType = Wrapper.DistributionType.ALL
 }
