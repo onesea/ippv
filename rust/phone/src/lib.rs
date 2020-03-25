@@ -42,25 +42,23 @@ fn add(nr: &str, iso: &str) {
  }
 
 fn parse(nr: &str) -> (u8, u8, u8, &str) {
-    let mut len = 0u8;
-    let mut ld = 0u8;
-    let mut ac = 0u8;
-    let mut iso: &str = "";
-
+    let mut res = (0u8,0u8,0u8,"");
     let mut tree = unsafe { &TREE };
+
     for (i, ch) in nr.chars().enumerate() {
         let index = ch.to_digit(10).unwrap() as usize;
         let opt = tree[index].as_ref();
         if opt.is_none() { break; }
         let node = opt.unwrap().as_ref();
         if node.flags == 1 {
-            if len == 0 { len = i as u8 + 1; }
-            else if ld == 0 { ld = i as u8 + 1; }
-            else { ac = i as u8 + 1; }
-            iso = &node.iso;
+            let len = (i + 1 ) as u8;
+            if res.0 == 0 { res.0 = len; }
+            else if res.1 == 0 { res.1 = len; }
+            else { res.2 = len; }
+            res.3 = &node.iso;
         }
         tree = &node.child;
     }
 
-    return (len,ld,ac,iso);
+    res
 } 
