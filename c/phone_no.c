@@ -124,7 +124,7 @@ int cc_init() {
 		g_tree[i].type_ = 0;
 		g_tree[i].child_ = 0;
 	}
-	for (unsigned i = 0; i < sizeof cc_list / sizeof cc_list[0]; i+=2) {
+	for (unsigned i = 0; i < sizeof cc_list / sizeof cc_list[0]; i+=3) {
 		cc_add(cc_list[i], cc_list[i+1]);
 	}
 	return 0;
