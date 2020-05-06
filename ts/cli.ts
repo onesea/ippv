@@ -1,4 +1,4 @@
-#!/opt/bin/deno --allow-net
+// deno run --allow-net cli.ts
 
 import { PhoneNo } from "./phone.ts"
 
