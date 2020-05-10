@@ -2,20 +2,21 @@
 
 require('phone')
 
+parser = ippv:new(nil)
 function parse (no)
-	return coroutine.yield(no,phone_parse(no))
+	return coroutine.yield(no,parser:parse(no))
 end
 
 phone_list={'123', '12390', '12301', '12301121', '12302', '79311200'}
 co = coroutine.create(function (index,options)
-		for i,no in ipairs(phone_list) do
-			index,options=parse(no)
+		for i, no in ipairs(phone_list) do
+			index,options = parse(no)
 		end
 	end)
 
-phone_add('123','my')
-phone_add('12301','up')
-phone_add('123011','co')
+parser:add('123','my')
+parser:add('12301','up')
+parser:add('123011','co')
 
 res = true
 while res do

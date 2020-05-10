@@ -1,8 +1,15 @@
 
-_tree = {child={}}
+ippv = {child={}}
 
-function phone_add(cc,iso)
-	node = _tree
+function ippv:new(o)
+	o = o or {child={}}
+	setmetatable(o, self)
+	self.__index = self
+	return o
+end
+
+function ippv:add(cc,iso)
+	node = self
 	for i = 1, string.len(cc) do
 		index=string.byte(cc,i) - string.byte('0',1)
 		if not node.child[index] then
@@ -14,8 +21,8 @@ function phone_add(cc,iso)
 	node.iso = iso
 end
 
-function phone_parse(no)
-	local node = _tree
+function ippv:parse(no)
+	local node = self
 	local cc = nil
 	local ld = nil
 	local ac = nil
