@@ -4,13 +4,14 @@ val gradle_version = "6.5"
 
 buildscript {
 	extra.apply {
-		set("kotlinVersion", "1.3.72")
+		set("kotlinVersion", "1.4-M2")
+		//set("kotlinVersion", "1.3.72")
 	}
 
 	repositories {
 		mavenCentral()
-		maven { url = uri("https://repo.spring.io/snapshot") }
-		maven { url = uri("https://repo.spring.io/milestone") }
+		gradlePluginPortal()
+		maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
 	}
 
 	dependencies {
@@ -25,13 +26,6 @@ plugins {
 	id("io.spring.dependency-management") version("1.0.9.RELEASE")
 }
 
-dependencyManagement {
-     imports {
-          mavenBom("io.projectreactor:reactor-bom:Bismuth-RELEASE")
-     }
-}
-
-
 group = "com.my"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_14
@@ -40,6 +34,7 @@ repositories {
 	mavenCentral()
 	maven { url = uri("https://repo.spring.io/snapshot") }
 	maven { url = uri("https://repo.spring.io/milestone") }
+	maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
 }
 
 application {
@@ -47,15 +42,13 @@ application {
 }
 
 dependencies {
-	//implementation("com.google.guava:guava:+")
-	//implementation("io.projectreactor:reactor-core")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib:${property("kotlinVersion")}")
 }
 
 tasks.withType<KotlinCompile> {
         kotlinOptions {
-                freeCompilerArgs = listOf("-Xjsr305=strict")
                 jvmTarget = "13"
+                freeCompilerArgs = listOf("-Xjsr305=strict")
         }
 }
 
