@@ -3,6 +3,8 @@ package com.my.ippv
 import java.util.stream.Stream
 
 fun main(args: Array<String>) {
+    if (args.size > 0)
+    	println("args size = ${args.size}")
     val ippv = PhoneNr()
     ippv.add("1", "US")
     ippv.add("852", "HK")
