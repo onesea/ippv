@@ -1,4 +1,4 @@
-val gradle_version = "6.5"
+val gradle_version = "6.6-rc-3"
 
 buildscript {
 	repositories {
@@ -34,4 +34,3 @@ tasks.wrapper {
   gradleVersion = gradle_version
   distributionType = Wrapper.DistributionType.ALL
 }
-
