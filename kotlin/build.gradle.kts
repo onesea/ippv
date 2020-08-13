@@ -24,7 +24,7 @@ plugins {
 	id("java")
 	id("application")
 	kotlin("jvm") version("${property("kotlinVersion")}")
-	id("io.spring.dependency-management") version("1.0.9.RELEASE")
+	id("io.spring.dependency-management") version("1.0.10.RELEASE")
 }
 
 group = "com.my"
