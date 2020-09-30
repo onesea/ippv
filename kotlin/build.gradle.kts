@@ -6,7 +6,7 @@ java.sourceCompatibility = JavaVersion.VERSION_15
 
 buildscript {
 	extra.apply {
-		set("kotlinVersion", "1.4.10")
+		set("kotlinVersion", "1.4.20-M1")
 	}
 
 	repositories {
