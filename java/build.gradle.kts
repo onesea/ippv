@@ -1,4 +1,4 @@
-val gradle_version = "6.7"
+val gradle_version = "6.8-milestone-2"
 
 buildscript {
 	repositories {
