@@ -1,6 +1,6 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-val gradle_version = "6.8-milestone-2"
+val gradle_version = "6.8-milestone-3"
 
 java.sourceCompatibility = JavaVersion.VERSION_15
 
