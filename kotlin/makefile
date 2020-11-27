@@ -4,7 +4,7 @@ KT=/root/kotlinc
 CWD=$(shell pwd -P)
 all: $(CWD)/phone.jar
 
-OPTIONS=-jvm-target 14 -include-runtime 
+OPTIONS=-jvm-target 15 -include-runtime 
 #OPTIONS=-jvm-target 13 # good for runkt
 
 $(CWD)/phone.jar:

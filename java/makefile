@@ -6,7 +6,7 @@ OPTIONS=-source 15 -target 15
 
 JDK=/opt/jdk-15
 rung graalvm: OPTIONS=-source 11 -target 11
-rung graalvm: JDK=/root/graalvm-ce-java11-20.2.0
+rung graalvm: JDK=/root/graalvm-ce-java11-20.3.0
 JAR=${JDK}/bin/jar
 JAVA=${JDK}/bin/java
 JAVAC=${JDK}/bin/javac
