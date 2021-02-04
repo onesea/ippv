@@ -1,12 +1,12 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-val gradle_version = "6.8.1"
+val gradle_version = "7.0-milestone-1"
 
 java.sourceCompatibility = JavaVersion.VERSION_15
 
 buildscript {
 	extra.apply {
-		set("kotlinVersion", "1.4.21")
+		set("kotlinVersion", "1.4.30-RC")
 	}
 
 	repositories {
