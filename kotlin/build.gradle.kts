@@ -1,12 +1,9 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-val gradle_version = "7.0-milestone-3"
-
-java.sourceCompatibility = JavaVersion.VERSION_15
+val gradle_version = "7.0-rc-1"
 
 buildscript {
 	extra.apply {
-		//set("kotlinVersion", "1.4.31")
 		set("kotlinVersion", "1.5.0-M1")
 	}
 
@@ -25,12 +22,12 @@ plugins {
 	id("java")
 	id("application")
 	kotlin("jvm") version("${property("kotlinVersion")}")
-	id("io.spring.dependency-management") version("1.0.10.RELEASE")
+	id("io.spring.dependency-management") version("1.0.11.RELEASE")
 }
 
 group = "com.my"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_15
+java.sourceCompatibility = JavaVersion.VERSION_16
 
 repositories {
 	mavenCentral()
