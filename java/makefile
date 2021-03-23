@@ -2,11 +2,11 @@ PKG=com/my/ippv
 CWD=$(shell pwd)
 SRCDIR=src/main/java
 
-OPTIONS=-source 15 -target 15
+OPTIONS=-source 16 -target 16
 
-JDK=/opt/jdk-15
+JDK=/root/jdk-16
 rung graalvm: OPTIONS=-source 11 -target 11
-rung graalvm: JDK=/root/graalvm-ce-java11-20.3.0
+rung graalvm: JDK=/root/graalvm-ce-java11-21.1.0-dev
 JAR=${JDK}/bin/jar
 JAVA=${JDK}/bin/java
 JAVAC=${JDK}/bin/javac
