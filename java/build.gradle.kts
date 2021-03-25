@@ -1,4 +1,4 @@
-val gradle_version = "7.0-milestone-3"
+val gradle_version = "7.0-rc-1"
 
 buildscript {
 	repositories {
@@ -14,7 +14,14 @@ plugins {
 
 group = "com.my"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_15
+java {
+	sourceCompatibility = JavaVersion.VERSION_16
+	targetCompatibility = JavaVersion.VERSION_16
+}
+
+tasks.withType<JavaCompile> {
+	options.release.set(16)
+}
 
 repositories {
 	mavenCentral()
