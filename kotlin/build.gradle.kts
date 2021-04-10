@@ -1,6 +1,6 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-val gradle_version = "7.0-rc-2"
+val gradle_version = "7.0"
 
 buildscript {
 	extra.apply {
