@@ -4,7 +4,7 @@ val gradle_version = "7.0"
 
 buildscript {
 	extra.apply {
-		set("kotlinVersion", "1.5.0-M2")
+		set("kotlinVersion", "1.5.0-RC")
 	}
 
 	repositories {
@@ -27,6 +27,7 @@ plugins {
 
 group = "com.my"
 version = "0.0.1-SNAPSHOT"
+
 java {
 	sourceCompatibility = JavaVersion.VERSION_16
 	targetCompatibility = JavaVersion.VERSION_16
