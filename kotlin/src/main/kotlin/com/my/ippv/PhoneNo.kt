@@ -7,7 +7,7 @@ class PhoneNr {
     fun add(cc: String, iso: String) {
         var node = root_
         cc.mapIndexedNotNull { i: Int, c: Char ->
-            val index = c.toInt() - '0'.toInt()
+            val index = c.code - '0'.code
             var tmp = node.child[index]
             if (tmp == null) {
                 tmp = Node(if (i == cc.length - 1) iso else null)
@@ -23,7 +23,7 @@ class PhoneNr {
 	var len = 0
         var res = Result()
         for (ch in phone) {
-            node = node!!.child[ch.toInt() - '0'.toInt()]
+            node = node!!.child[ch.code - '0'.code]
             if (node == null) {
 		    break;
 	    }
