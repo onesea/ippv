@@ -1,0 +1,20 @@
+#!/usr/bin/zsh
+
+file=~/dl.tar.xz
+
+cd /
+
+files='etc/wireguard root/{.ssh,.zsh_history,.zshrc} opt'
+if [[ -f boot/gentoo.config ]] {
+	files+=' boot/gentoo.config'
+}
+
+if [[ -f boot/fedora.config ]] {
+	files+=' boot/fedora.config'
+}
+
+exclude='{opt/vultr,opt/tmp}'
+echo "tar|xz ... ${file}"
+eval tar cf - --exclude=${exclude} ${files} | xz > ${file}
+ls -al ${file}
+sha256sum ${file}
