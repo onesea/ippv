@@ -33,7 +33,7 @@ dependencies {
 }
 
 application {
-	mainClassName = "com.my.ippv.Main"
+	mainClassName = "com.y.ippv.Main"
 }
 
 tasks.wrapper {

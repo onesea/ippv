@@ -42,7 +42,7 @@ repositories {
 }
 
 application {
-	mainClassName = "com.my.ippv.MainKt"
+	mainClassName = "com.y.ippv.MainKt"
 }
 
 dependencies {
