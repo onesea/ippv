@@ -18,13 +18,10 @@ building_status () {
 	local RED="\033[1;31m"
 	local GREEN="\033[1;32m"
 	local NOCOLOR="\033[0m"
-	local id="fedora"
-	if (grep 'CONFIG_LOCALVERSION.*gentoo' /usr/src/linux/.config>/dev/null) {
-		id="gentoo"
-	}
 	local t0=$1
+	local id=$2
 	local m=`stat -c %Y ${log_file}`
-	t1=`date +%s.%N`
+	local t1=`date +%s.%N`
 	m=`echo "($t1 - $m)/1"|bc`
 	echo "${GREEN}${id}${NOCOLOR} making started ${GREEN}`fmtime $t0 $t1`${NOCOLOR} ago. active ${GREEN}${m}s${NOCOLOR} ago"
 }
@@ -38,15 +35,23 @@ status () {
 	if [[ -z "$t0" ]] {
 		return 0
 	}
+
+	local id="fedora"
+	if (grep 'CONFIG_LOCALVERSION.*gentoo' /usr/src/linux/.config>/dev/null) {
+		id="gentoo"
+	}
+
 	local e=`tail -2 ${log_file} | head -1`
 	local t1=`date -d "$e" +%s.%N` 2>/dev/null
 
 	if [[ -z "$t1" ]] || [[ $t1 -eq $t0 ]] {
-		building_status $t0
+		building_status $t0 ${id}
 	} else {
 		local t2=`date +%s.%N` 2>/dev/null
-		echo "make finished `fmtime $t1 $t2` ago, time cost `fmtime $t0 $t1`"
+		echo "[${id}] make finished `fmtime $t1 $t2` ago, time cost `fmtime $t0 $t1`"
 	}
+
+	tail ${log_file}
 }
 
 getver() {
@@ -97,7 +102,7 @@ pack () {
 		cp boot/gentoo.config boot/config-${ver}
 		tar cf - lib/modules/${ver} boot/{System.map,vmlinuz,config}-${ver} | lzip -9 > l.tar.lz
 	}
-	echo "rm -rf boot/include lib/modules/${ver} boot/{System.map-,vmlinuz-}${ver}"
+	echo "rm -rf boot/include lib/modules/${ver} boot/{System.map,vmlinuz}-${ver}"
 	rm -rf boot/include lib/modules/${ver} boot/{System.map,vmlinuz,config}-${ver}
 
 	if ! (ls -L boot/vmlinuz>/dev/null 2>&1) {
