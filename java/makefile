@@ -4,7 +4,7 @@ SRCDIR=src/main/java
 
 OPTIONS=-source 16 -target 16
 
-JDK=/root/jdk-16
+JDK=/root/jdk-16.0.1
 rung graalvm: OPTIONS=-source 16 -target 16
 rung graalvm: JDK=/root/graalvm-ce-java16-21.1.0-dev
 JAR=${JDK}/bin/jar

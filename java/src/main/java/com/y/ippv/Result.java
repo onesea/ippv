@@ -1,4 +1,4 @@
-package com.my.ippv;
+package com.y.ippv;
 
 public class Result {
 	public int cc_ = 0;

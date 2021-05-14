@@ -1,24 +1,13 @@
-package com.my.ippv;
+package com.y.ippv;
 
 import io.lktk.NativeBLAKE3;
 import io.lktk.NativeBLAKE3Util;
 
 import java.util.Base64;
-import java.util.stream.Stream;
 
-public class Main {
-	public static void main(String[] args) {
-	    var ippv = new PhoneNo();
-	    ippv.add("1", "US");
-	    ippv.add("852", "HK");
-
-	    var stream = Stream.of("85940056","185940056","85285940056");
-	    stream.forEach(no -> System.out.println(no + " -> " + ippv.match(no)));
-	    testBLAKE3();
-	}
-
+public class BLAKE3 {
 	static void testBLAKE3() {
-		assert(io.lktk.NativeBLAKE3.isEnabled());
+		assert(NativeBLAKE3.isEnabled());
 		// Initialize the hasher
 		var hasher = new NativeBLAKE3();
 		hasher.initDefault();
