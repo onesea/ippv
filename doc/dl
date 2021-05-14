@@ -18,3 +18,4 @@ echo "tar|xz ... ${file}"
 eval tar cf - --exclude=${exclude} ${files} | xz > ${file}
 ls -al ${file}
 sha256sum ${file}
+openssl dgst -sha3-256 ${file}
