@@ -10,7 +10,6 @@ public class Main {
 
 	    var stream = Stream.of("85940056","185940056","85285940056");
 	    stream.forEach(no -> System.out.println(no + " -> " + ippv.match(no)));
-	    BLAKE3.testBLAKE3();
 	}
 
 }
