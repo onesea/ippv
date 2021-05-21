@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!env zsh
 
 log_file=~/l.log
 
