@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
 	extra.apply {
-		set("kotlinVersion", "1.5.0")
+		set("kotlinVersion", "1.5.20")
 	}
 
 	repositories {
@@ -57,6 +57,6 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.wrapper {
-	gradleVersion = "7.0.2"
+	gradleVersion = "7.1.1"
 	distributionType = Wrapper.DistributionType.ALL
 }
