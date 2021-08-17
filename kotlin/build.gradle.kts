@@ -31,7 +31,7 @@ java {
 	targetCompatibility = JavaVersion.VERSION_16
 }
 tasks.withType<JavaCompile> {
-	options.release.set(16)
+	options.release.set(17)
 }
 
 repositories {
@@ -57,6 +57,6 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.wrapper {
-	gradleVersion = "7.1.1"
+	gradleVersion = "7.2-rc-2"
 	distributionType = Wrapper.DistributionType.ALL
 }
