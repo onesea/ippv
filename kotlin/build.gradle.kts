@@ -57,6 +57,6 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.wrapper {
-	gradleVersion = "7.2-rc-3"
+	gradleVersion = "7.2"
 	distributionType = Wrapper.DistributionType.ALL
 }
