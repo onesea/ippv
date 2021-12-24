@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
 	extra.apply {
-		set("kotlinVersion", "1.5.30-RC")
+		set("kotlinVersion", "1.6.10")
 	}
 
 	repositories {
@@ -27,9 +27,17 @@ group = "com.my"
 version = "0.0.1-SNAPSHOT"
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_16
-	targetCompatibility = JavaVersion.VERSION_16
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
 }
+
+tasks.withType<KotlinCompile> {
+        kotlinOptions {
+                jvmTarget = "17"
+                freeCompilerArgs = listOf("-Xjsr305=strict")
+        }
+}
+
 tasks.withType<JavaCompile> {
 	options.release.set(17)
 }
@@ -49,14 +57,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib:${property("kotlinVersion")}")
 }
 
-tasks.withType<KotlinCompile> {
-        kotlinOptions {
-                jvmTarget = "16"
-                freeCompilerArgs = listOf("-Xjsr305=strict")
-        }
-}
-
 tasks.wrapper {
-	gradleVersion = "7.2"
+	gradleVersion = "7.3.3"
 	distributionType = Wrapper.DistributionType.ALL
 }
