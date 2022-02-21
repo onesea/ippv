@@ -36,6 +36,6 @@ application {
 }
 
 tasks.wrapper {
-  gradleVersion = "7.3.3"
+  gradleVersion = "7.4"
   distributionType = Wrapper.DistributionType.ALL
 }
